@@ -1,22 +1,28 @@
 package com.app.login.servicios;
 
 import java.util.List;
-
 import org.springframework.stereotype.Service;
-
-import com.app.login.entidad.Usuario;
+import com.app.login.dto.UsuarioDTO;
 
 @Service
 public interface ServicioUsuario {
 	
-	public Usuario RegistrarUsuario(Usuario usuario);
+	public UsuarioDTO RegistrarUsuario(UsuarioDTO usuarioDTO);
 	
-	public void ActualizarUsuario(Integer id,  String dni, String nombre, String apellidos, String nomUser, String contrasenia, int edad, String correo, String celular);
+	public UsuarioDTO ActualizarUsuario(UsuarioDTO usuarioDTO, Integer id);
 	
-	public Usuario ValidarUsuario(String nomUser, String contrasenia);
+	public UsuarioDTO ValidarUsuario(String nomUser, String contrasenia);
 	
-	public List<Usuario> ListarUsuarios();
+	public void EliminarUsuario(Integer id);
 	
-	public Usuario MostrarUsuario(String nomUser, String contrasenia);
+	public List<UsuarioDTO> ListarUsuarios();
+	
+	public UsuarioDTO MostrarUsuario(Integer id);
+	
+	public UsuarioDTO validarNomUser(String nomUser);
+	
+	public UsuarioDTO validarDni(String dni);
+	
+	public UsuarioDTO validarCorreo(String correo);
 	
 }

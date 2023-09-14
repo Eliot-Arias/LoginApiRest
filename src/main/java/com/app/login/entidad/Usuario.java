@@ -27,20 +27,27 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@Column(name = "dni", nullable = false, unique = true)
 	private String dni;
 	
+	@Column(name = "nombres", nullable = false)
 	private String nombres;
 	
+	@Column(name = "apellidos", nullable = false)
 	private String apellidos;
 	
-	@Column(name = "nom_user")
+	@Column(name = "nom_user ", nullable = false, unique = true)
 	private String nomUser;
 	
+	@Column(name = "contrasenia", nullable = false)
 	private String contrasenia;
 	
+	@Column(name = "edad", nullable = false)
 	private int edad;
 	
+	@Column(name = "correo", nullable = false, unique = true)
 	private String correo;
 	
+	@Column(name = "celular", nullable = false)
 	private String celular;	
 }
