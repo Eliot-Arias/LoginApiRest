@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,6 +35,15 @@ public class Controlador {
 		
 	}
 	
+	@PutMapping("/actualizarUsuario")
+	public ResponseEntity<UsuarioDTO> actualizarUsuario(@RequestBody UsuarioDTO usuarioDTO){
+		
+		
+		
+		return new ResponseEntity<>(servicioUsuario.ActualizarUsuario(usuarioDTO), HttpStatus.CREATED);
+	}
+	
+	
 	@GetMapping("/listar")
 	public List<UsuarioDTO> listarPublicaciones(){		
 		
@@ -51,6 +61,14 @@ public class Controlador {
 		}
 		
 	}
+	
+	
+	@PostMapping("/usuario")
+	public ResponseEntity<UsuarioDTO> verUsuario(@RequestParam String dni){
+		UsuarioDTO usuarioDTO = servicioUsuario.MostrarUsuario(dni);
+		return new ResponseEntity<>(usuarioDTO, HttpStatus.OK);		
+	}
+	
 	
 	@DeleteMapping("/EliminarUsuario/{id}")
 	public void EliminarUsuario(@PathVariable Integer id) {

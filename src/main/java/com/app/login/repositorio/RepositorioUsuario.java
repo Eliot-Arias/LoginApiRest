@@ -12,7 +12,7 @@ public interface RepositorioUsuario extends JpaRepository<Usuario, Integer>{
 
 	Optional<Usuario> findByNomUserAndContrasenia(String nomUser, String contrasenia);
 	Usuario findByNomUser(String nomUser);
-	Usuario findByDni(String dni);
+	Optional<Usuario> findByDni(String dni);
 	Usuario findByCorreo(String correo);
 	
 }

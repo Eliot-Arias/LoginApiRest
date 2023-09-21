@@ -9,7 +9,7 @@ public interface ServicioUsuario {
 	
 	public UsuarioDTO RegistrarUsuario(UsuarioDTO usuarioDTO);
 	
-	public UsuarioDTO ActualizarUsuario(UsuarioDTO usuarioDTO, Integer id);
+	public UsuarioDTO ActualizarUsuario(UsuarioDTO usuarioDTO);
 	
 	public UsuarioDTO ValidarUsuario(String nomUser, String contrasenia);
 	
@@ -17,7 +17,7 @@ public interface ServicioUsuario {
 	
 	public List<UsuarioDTO> ListarUsuarios();
 	
-	public UsuarioDTO MostrarUsuario(Integer id);
+	public UsuarioDTO MostrarUsuario(String dni);
 	
 	public UsuarioDTO validarNomUser(String nomUser);
 	

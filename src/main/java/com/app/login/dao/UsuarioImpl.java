@@ -38,10 +38,10 @@ public class UsuarioImpl implements ServicioUsuario{
 	}
 	
 	@Override
-	public UsuarioDTO ActualizarUsuario(UsuarioDTO usuarioDTO, Integer id) {
+	public UsuarioDTO ActualizarUsuario(UsuarioDTO usuarioDTO) {
 		
-		Usuario usuario = repositorioUsuario.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundExcepcion("Usuario", "ID", id));
+		Usuario usuario = repositorioUsuario.findById(usuarioDTO.getId())
+				.orElseThrow(() -> new ResourceNotFoundExcepcion("Usuario", "ID", usuarioDTO.getId()));
 		
 		usuario.setDni(usuarioDTO.getDni());
 		usuario.setNombres(usuarioDTO.getNombres());
@@ -54,7 +54,7 @@ public class UsuarioImpl implements ServicioUsuario{
 		
 		Usuario usuarioActualizado = repositorioUsuario.save(usuario);
 		
-		return mapearDto(usuario);
+		return mapearDto(usuarioActualizado);
 	}
 
 	@Override
@@ -67,10 +67,10 @@ public class UsuarioImpl implements ServicioUsuario{
 	}
 
 	@Override
-	public UsuarioDTO MostrarUsuario(Integer id) {
+	public UsuarioDTO MostrarUsuario(String dni) {
 		
-		Usuario usuario = repositorioUsuario.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundExcepcion("Usuario", "ID", id));
+		Usuario usuario = repositorioUsuario.findByDni(dni)
+				.orElseThrow(() -> new ResourceNotFoundExcepcion("Usuario", "ID", dni));
 		
 		return mapearDto(usuario);
 	}
